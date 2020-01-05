@@ -1,21 +1,28 @@
-package br.com.sportscloud.apirest.models;
+package br.com.sportscloud.apirest.entities;
 
-import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
-@Entity
-@Table(name="TB_USUARIO")
-public class Usuarios implements Serializable {
-    private  static  final long serialVersionUID = 1l;
+public class Usuario implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String email;
     private String senha;
     private String nome;
     private String sexo;
     private String funcao;
+
+    public Usuario() {
+    }
+
+    public Usuario(long id, String email, String senha, String nome, String sexo, String funcao) {
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+        this.nome = nome;
+        this.sexo = sexo;
+        this.funcao = funcao;
+    }
 
     public long getId() {
         return id;
@@ -63,5 +70,18 @@ public class Usuarios implements Serializable {
 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return id == usuario.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
