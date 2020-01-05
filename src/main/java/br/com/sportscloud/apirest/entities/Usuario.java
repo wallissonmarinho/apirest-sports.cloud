@@ -18,6 +18,10 @@ public class Usuario implements Serializable {
     private String sexo;
     private String funcao;
 
+    @ManyToOne
+    @JoinColumn(name = "equipe_id")
+    private Equipe equipe;
+
     public Usuario() {
     }
 
@@ -28,6 +32,10 @@ public class Usuario implements Serializable {
         this.nome = nome;
         this.sexo = sexo;
         this.funcao = funcao;
+    }
+
+    public Usuario(Equipe equipe) {
+        this.equipe = equipe;
     }
 
     public long getId() {
@@ -76,6 +84,14 @@ public class Usuario implements Serializable {
 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
+    }
+
+    public Equipe getEquipe() {
+        return equipe;
+    }
+
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
     }
 
     @Override
