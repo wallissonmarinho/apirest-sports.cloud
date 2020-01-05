@@ -1,10 +1,16 @@
 package br.com.sportscloud.apirest.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "TB_USUARIO")
 public class Usuario implements Serializable {
+    private static final long serialVersionUID = 1l;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String email;
     private String senha;
