@@ -10,17 +10,13 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1l;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String email;
     private String senha;
     private String nome;
     private String sexo;
     private String funcao;
-
-    @ManyToOne
-    @JoinColumn(name = "equipe_id")
-    private Equipe equipe;
 
     public Usuario() {
     }
@@ -34,9 +30,6 @@ public class Usuario implements Serializable {
         this.funcao = funcao;
     }
 
-    public Usuario(Equipe equipe) {
-        this.equipe = equipe;
-    }
 
     public long getId() {
         return id;
@@ -86,13 +79,6 @@ public class Usuario implements Serializable {
         this.funcao = funcao;
     }
 
-    public Equipe getEquipe() {
-        return equipe;
-    }
-
-    public void setEquipe(Equipe equipe) {
-        this.equipe = equipe;
-    }
 
     @Override
     public boolean equals(Object o) {
